@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Event from "./Event";
 import reducer from "../reducers";
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
       <h4>イベント作成フォーム</h4>
       <form>
         <div className="form-group">
-          <label for="formEventTitle">タイトル</label>
+          <label htmlFor="formEventTitle">タイトル</label>
           <input
             className="form-control"
             id="formEventTitle"
@@ -34,7 +35,7 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label for="formEventBody">ボディー</label>
+          <label htmlFor="formEventBody">ボディー</label>
           <textarea
             className="form-control"
             id="formEventBody"
@@ -50,7 +51,7 @@ const App = () => {
       </form>
 
       <h4>イベント一覧</h4>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th>ID</th>
@@ -59,7 +60,11 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {state.map((event, index) => (
+            <Event key={index} event={event} dispatch={dispatch} />
+          ))}
+        </tbody>
       </table>
     </div>
   );
