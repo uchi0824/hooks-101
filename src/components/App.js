@@ -8,9 +8,10 @@ import reducer from "../reducers";
 const App = () => {
   const initialState = {
     events: [],
+    operationLogs: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  console.log({ state });
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <div className="containar-fluid">
